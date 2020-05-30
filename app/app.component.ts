@@ -11,39 +11,7 @@ export class AppComponent {
   ngOnInit() {
     this.init();
   }
-
-  addPoint() {
-    if (this.chart) {
-      this.chart.addPoint(Math.floor(Math.random() * 10));
-    } else {
-      alert('init chart, first!');
-    }
-  }
-
-  addSerie() {
-    this.chart.addSeries({
-      name: 'Line ' + Math.floor(Math.random() * 10),
-      data: [
-        Math.floor(Math.random() * 10),
-        Math.floor(Math.random() * 10),
-        Math.floor(Math.random() * 10),
-        Math.floor(Math.random() * 10),
-        Math.floor(Math.random() * 10),
-        Math.floor(Math.random() * 10),
-        Math.floor(Math.random() * 10),
-        Math.floor(Math.random() * 10),
-        Math.floor(Math.random() * 10)
-      ]
-    });
-  }
-
-  removePoint() {
-    this.chart.removePoint(this.chart.ref.series[0].data.length - 1);
-  }
-
-  removeSerie() {
-    this.chart.removeSeries(this.chart.ref.series.length - 1);
-  }
+  
 
   init() {
     let chart = new Chart({
@@ -56,19 +24,42 @@ export class AppComponent {
       credits: {
         enabled: false
       },
+      xAxis:{
+        gridLineWidth:0,
+        lineWidth: 1,
+         categories:['week1', 'week2', 'week3', 'week4','week5','week6','week7','week8']
+      },
+      legend: {
+        align: 'right',
+        verticalAlign: 'top',
+        layout: 'vertical'
+      },
+      plotOptions : {
+        series: {
+						marker:false
+        }
+      },
       series: [{
-        name: 'Line 1',
-        data: [1, 2, 3]
-      }]
+        name: 'YEAR 2020',
+        color:'red',
+        data: [0, 2,1,2.2,1,2.4,5,2]
+    }, {
+        name: 'YEAR 2019',
+        color:'green',
+        data: [0.5, 1.4, 3, 3, 2, 3, 2.2, 5],
+    }, {
+        name: 'YEAR 2018',
+        color:'blue',
+        data: [0, 1, 2, 2.4, 1.5, 2, 3.2, 4.5],
+    },{
+        name: 'YEAR 2017',
+        color:'orange',
+        data: [0.5, 4, 0.5, 1.4, 2.5, 0.1, 2.2, 2],
+    }]
     });
-    chart.addPoint(4);
+     
     this.chart = chart;
-    chart.addPoint(5);
-    setTimeout(() => {
-      chart.addPoint(6);
-    }, 2000);
-
-    chart.ref$.subscribe(console.log);
+      
   }
 
 }
