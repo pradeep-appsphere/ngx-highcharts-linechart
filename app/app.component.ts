@@ -29,6 +29,10 @@ export class AppComponent {
         lineWidth: 1,
          categories:['week1', 'week2', 'week3', 'week4','week5','week6','week7','week8']
       },
+      yAxis:{
+          lineWidth: 1,
+          gridLineWidth:0
+      },
       legend: {
         align: 'right',
         verticalAlign: 'top',
@@ -36,7 +40,7 @@ export class AppComponent {
       },
       plotOptions : {
         series: {
-						marker:false
+						marker:false,
         }
       },
       series: [{
